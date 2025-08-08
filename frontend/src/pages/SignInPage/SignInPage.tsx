@@ -39,6 +39,10 @@ const SignInPage = () => {
 				response.tokens.refreshToken,
 			);
 
+			if (!response.user) {
+				throw new Error('User data not received from server');
+			}
+
 			const userData = {
 				...response.user,
 				createdAt: response.user.createdAt
@@ -176,11 +180,11 @@ const SignInPage = () => {
 			<StatusMessage type='error' message={errorMsg} />
 			<StatusMessage type='success' message={successMsg} />
 
-			<div className='text-center mt-8 text-gray-400 text-sm'>
+			<div className='mt-8 text-sm text-center text-gray-400'>
 				Don't have an account?{' '}
 				<button
 					type='button'
-					className='text-blue-400 hover:text-blue-300 font-medium underline transition-colors duration-200'
+					className='font-medium text-blue-400 underline transition-colors duration-200 hover:text-blue-300'
 					onClick={() => navigate('/auth/sign-up')}
 				>
 					Sign Up

@@ -39,6 +39,10 @@ const SignUpPage = () => {
 				response.tokens.refreshToken,
 			);
 
+			if (!response.user) {
+				throw new Error('User data not received from server');
+			}
+
 			dispatch(userSliceActions.setUser({ ...response.user }));
 
 			localStorage.setItem('user', JSON.stringify({ ...response.user }));

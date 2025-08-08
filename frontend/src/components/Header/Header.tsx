@@ -42,14 +42,14 @@ const Header: FC = () => {
 								<div className='flex items-center px-4 py-2 space-x-3 border bg-gray-800/50 border-gray-700/50 rounded-xl backdrop-blur-sm'>
 									<div className='flex items-center justify-center w-8 h-8 rounded-full shadow-lg bg-gradient-to-br from-blue-500 to-purple-600'>
 										<span className='text-sm font-semibold text-white'>
-											{user.name.charAt(0).toUpperCase()}
+											{user.name?.charAt(0)?.toUpperCase() || 'U'}
 										</span>
 									</div>
 									<span className='text-sm font-medium text-gray-200'>
-										{user.name}
+										{user.name || 'User'}
 									</span>
 								</div>
-								<UserMenu username={user.name} />
+								<UserMenu username={user.name || 'User'} />
 							</div>
 						) : (
 							<div className='flex items-center space-x-3'>
